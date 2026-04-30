@@ -1,7 +1,14 @@
+using DI_Service_Lifetime.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Dependency Injection for Services
+builder.Services.AddTransient<_ITransientService, TransientService>();
+builder.Services.AddScoped<_IScopedService, ScopedService>();
+builder.Services.AddSingleton<_ISingletonService, SingletonService>();
 
 var app = builder.Build();
 
