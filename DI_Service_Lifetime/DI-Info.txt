@@ -1,0 +1,34 @@
+﻿•	Transient — 
+    a new instance every time it's requested. 
+    Use for lightweight, stateless helpers (e.g., formatters); when you want no shared state.
+
+•	Scoped — 
+    one instance per web request (or DI scope). 
+    Use for things that should be shared within a single request but not across requests (e.g., DbContext).
+
+•	Singleton — 
+    one instance for the whole app lifetime.     
+    Use for shared, thread-safe data or services (e.g., configuration, caches, HTTP clients).
+
+    ------------------------------------------------------------------------------------------------------------------------
+
+    Quick recap: these are DI lifetimes — they tell the container how often to create a service instance.
+
+•	Transient — a fresh instance every time something asks for it.
+•	Use for tiny, stateless helpers (formatters, small calculators).
+•	Example: a service that returns a new random ID each call.
+•	Good: no shared state. Bad: more object creations.
+
+•	Scoped — one instance per scope; in a web app (Razor Pages) the scope = one HTTP request.
+•	Use for things that should be shared during a single request (DbContext, per-request user data).
+•	Example: EF Core DbContext: same instance for all code handling that request so changes/transactions work.
+•	Good: consistent per-request state. Bad: not safe to share across requests.
+
+•	Singleton — one instance for the whole app lifetime.
+•	Use for shared, thread-safe resources (in-memory caches, HttpClient, app-wide configuration).
+•	Example: a single cache object or a single HttpClient.
+•	Good: fewer allocations, shared data. Bad: must be thread-safe and must never hold request-specific data.
+
+Important rule: don’t inject a scoped service into a singleton directly (it would try to live for the app). 
+                If you need per-request behavior inside a long-lived component, use factories or IServiceProvider 
+                to create/request the scoped service when handling a request.
