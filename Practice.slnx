@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="concepts/concepts.csproj" Id="a4d27434-55ee-4163-93df-d2225602be0f" />
   <Project Path="DI_Service_Lifetime/DI_Service_Lifetime.csproj" />
 </Solution>

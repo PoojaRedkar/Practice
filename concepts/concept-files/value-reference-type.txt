@@ -1,0 +1,10 @@
+﻿#Value Type :
+- Data Type which holds the actual value within it's own memory space.
+- Variable of these data type directly contain their values.
+- int, char, long, short, ushort, ulong, float, double, decimal, enum, byte, bool etc...
+- Stack Memory
+
+#Reference Type :
+- does not store the value directly, instead it stores the address of the value.
+- string, object, class, interface, delegate, array etc...
+- Heap Memory
