@@ -8,3 +8,36 @@
 - does not store the value directly, instead it stores the address of the value.
 - string, object, class, interface, delegate, array etc...
 - Heap Memory
+
+Q. What is the difference between value types and reference types in C#? and how does that affect the copying,mutation,boxing,and memory 
+behaviour in production application.
+
+
+- What they are
+  - Value types: store the actual data (examples: int, struct). Stored inline (stack or inside objects).
+  - Reference types: store a reference to an object on the heap (examples: class, string, array).
+
+- Copying
+  - Value type copy = full copy of the data. Changes to the copy do not affect the original.
+  - Reference type copy = copy of the reference (pointer). Both references point to the same object.
+
+- Mutation
+  - Mutating a value type copy changes only that copy.
+  - Mutating a reference type via any reference changes the single shared object.
+
+- Passing to methods
+  - Both are passed by value by default:
+    - Value type: method gets a copy of the data.
+    - Reference type: method gets a copy of the reference (method can mutate the same object).
+  - Use ref/out/in to pass by reference when needed.
+
+- Boxing / unboxing
+  - Boxing: value type -> object creates a heap copy.
+  - Unboxing: extracts a value type copy from the boxed object.
+  - Boxing allocates and can hurt performance in hot paths.
+
+- Memory & production notes
+  - Small value types reduce GC pressure; large structs cause expensive copies.
+  - Reference types are heap allocated and cleaned by the GC; many short-lived objects increase GC work.
+  - Prefer small immutable structs (<= ~16 bytes). Use classes for larger or mutable data.
+
