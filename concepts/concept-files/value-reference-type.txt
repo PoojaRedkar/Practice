@@ -3,11 +3,13 @@
 - Variable of these data type directly contain their values.
 - int, char, long, short, ushort, ulong, float, double, decimal, enum, byte, bool etc...
 - Stack Memory
+- Memory Allocated at compile time
 
 #Reference Type :
 - does not store the value directly, instead it stores the address of the value.
 - string, object, class, interface, delegate, array etc...
 - Heap Memory
+- Memory Allocated at run time
 
 Q. What is the difference between value types and reference types in C#? and how does that affect the copying,mutation,boxing,and memory 
 behaviour in production application.

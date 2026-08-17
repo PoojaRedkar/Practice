@@ -1,0 +1,35 @@
+﻿Q. Explain Boxing and UnBoxing. What performance problems can boxing create in high-throughput code, and how would you identify and avoid unnecessry boxing?
+
+BOXING -
+- Converting a value type to a reference type is called boxing in c#.
+- lower to higher to date type.
+- implicit casting.
+
+ int i=12;
+ object box=i;
+
+
+UNBOXING - 
+- Converting a reference type to a value type is called unboxing in c#.
+- higher to lower data type.
+- need typecast.
+- explicit casting.
+
+ object box =12;
+ int i=(int)box;
+
+Boxing is the conversion of a value type such as int or a struct to object or an interface.
+The runtime creates an object on the managed heap and copies the value into it.
+Unboxing is extracting the value type from that boxed object, with a runtime type check.
+
+The main performance concern with boxing in high-throughput code is allocation.
+Repeated boxing creates many short-lived heap objects, which increases allocation rate and GC pressure and can affect CPU usage, latency and throughput.
+
+I look for boxing around object-based APIs,non-generic collections such as ArrayList, 
+interface conversions of value types,params object[], and older formatting/logging APIs.
+I would confirm the problem using allocation profiling, Visual Studio Performance Profiler, PerfView, dotnet-trace or BenchmarkDotNet 
+rather than assuming boxing is the bottleneck.
+
+To avoid unnecessary boxing, I prefer generic collections such as List<T>, generic methods, strongly typed APIs, 
+and modern .NET APIs such as source-generated logging or interpolated string handlers where appropriate.
+The goal isn't to eliminate every boxing operation, but to eliminate unnecessary boxing in hot paths.
