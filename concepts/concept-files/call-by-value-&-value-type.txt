@@ -1,0 +1,15 @@
+﻿1. Value Type(The "What")
+
+- A value type is a data classification.
+- In c#, variables of value types directly contain their data.
+- They are usually stored in stack memory.
+** Example - built in data types like int, float, bool, char and user-defined struct or enum.
+** Behavior - when you assign one value type variable to another, a complete copy of that data is made. They operate entirely independently.
+
+	int x = 67;
+	int y = x; // y gets copy of the value i.e. y=67
+	y = 89;    // changing y does not change x i.e. x=67, y=89
+
+2. Call by value(The "how")
+
+- Call by value (or pass by value)

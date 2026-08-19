@@ -1,0 +1,107 @@
+﻿Method overriding in C# is used when a child class wants to provide its own implementation of a method that is already defined in the parent class.
+
+The key idea is : "Same method contract, but different behaviour depending on the actual object."
+
+This is runtime polymorphism.
+- same method name and same parameter then add override keyword in child class.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q. when do we need to override the method in C#?
+=> if the superclass/baseclass logic is not fullfilling the subclass / child class business requirement, then the subclass/childclass needs to override the 
+   superclass method with the required business logic.
+   Parent class usually contains the logic which is common for all next-level sub-classes.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q. When is sub class method treated as an overriding method in C#?
+=> When the child class/subclass method name as well as the signature is same as the parentclass/baseclass then the child class method is treated as
+   overriding method and the parent class method is treated as a overridden method.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q. How can we Override a parent class method under child class in c#?
+=> if you want to override parent class method into child class then it must use "virtual" keyword. then only the child class gets permissin for overriding
+   the method.
+   if child class wants to override the parent class method then it must use "override" modifier. 
+   overriding the parent class in child class is not mandatory.
+
+   class class1
+   {
+		public virtual void show()
+		{
+			console.writeline("class1");
+		}
+   }
+
+   class class2:class1
+   {
+		public override void show()
+		{
+			console.writeline("class2");
+		}
+   }
+
+   class program
+   {
+		public static void main(string args[])
+		{
+			class1 obj1 = new class2;
+			obj1.show();				//o/p= class2
+
+			class2 obj2 = new class2;
+			obj2.show();				//o/p= class2
+
+			console.readkey();
+		}
+   }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q. How can we execute the superclass/parentclass method if it is overridden in the subclass/childclass in c#?
+=> once we re-implement tthe parent class emthod under the child class then the object of the child class call its own method but you want to still consume/call
+   the parent class's methods from child class then it can be done in 2 ways.
+   1. by creating parent class object under the child class
+   2. by using the base keyword [this and base keyword CANNOT be used under static block]
+   - class childclass:baseclass{
+		public override void show(){
+			baseclass b = new baseclass(); 
+			b.show();						//1
+			base.show();					//2
+			}}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Q. Method overriding real-time example in c#?
+=> 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Simple Example : 
+
+//ParentClass/ Baseclass
+class Animal
+{
+	public virtual void makesound()
+	{
+		console.writeline("animal makes a sound.");
+	}
+}
+
+//Subclass / childclass
+class Dog:Animal
+{
+	public override void makesound()
+	{
+		console.writeline("dog barks.");
+	}
+}
+
+class Cat:Animal
+{
+	public override void makesound()
+	{
+		console.writeline("cat meows.");
+	}
+}
+
+Animal animal1 = new Dog();
+Animal animal2 = new Cat();
+
+animal1.makesound(); //dog barks
+animal2.makesound(); // cat meows
