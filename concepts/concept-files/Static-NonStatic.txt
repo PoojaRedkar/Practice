@@ -31,3 +31,22 @@
 - Additional notes:
   - Static fields get default values if not explicitly initialized (e.g., numeric -> 0, reference -> null).
   - Consider thread-safety when using static mutable state in multi-threaded applications.
+
+- Changed files (git):
+  - concepts/StaticKeywordDemo/Exampleinterview.cs:
+    - Demonstrates static vs instance fields: static fields (shared across instances) and instance fields (per-object).
+    - Methods show how modifying a static field affects all objects while instance fields change per object (Increment/Show, change methods).
+
+  - concepts/StaticKeywordDemo/sequence.cs:
+    - Demonstrates static constructor (executes once before any instance or static member access) and instance constructor (executes per object).
+    - Shows execution order: static constructor -> Main -> instance constructors when objects are created.
+
+  - concepts/StaticKeywordDemo/static-non-static-method.cs:
+    - Demonstrates static methods accessing instance members only via an object, and instance methods accessing static members directly.
+    - Shows use of this for instance members and ClassName.Member for static members; practical examples (add/multiplication).
+
+  - concepts/Program.cs:
+    - Illustrates how example classes are invoked from a central Program file (which examples are commented/uncommented to run).
+
+- How these relate to static vs non-static notes:
+  - The new files provide practical, runnable examples covering: field sharing, constructor execution order, and method-level access rules. Add them as hands-on tests when studying static vs instance behavior.

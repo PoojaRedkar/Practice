@@ -13,7 +13,13 @@ using System;
 
 //details.showDetails();
 
-static_nonstatic_variables.Main();
+//static_nonstatic_variables.Main();
+
+//static_non_static_method.main();
+
+//sequence.main();
+
+Exampleinterview.main();
 
 Console.WriteLine();
 Console.WriteLine("Press Enter to exit...");
