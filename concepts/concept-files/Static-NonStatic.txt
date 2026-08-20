@@ -1,0 +1,33 @@
+﻿Static vs Non-Static Variables
+------------------------------
+
+- Definition:
+  - Static (class) variable: belongs to the class itself. There is a single copy shared by all instances.
+  - Non-static (instance) variable: belongs to an instance/object. Each object has its own copy.
+
+- Declaration and access:
+  - Static variables are declared with the "static" keyword (e.g., static int y = 56;).
+  - Access static members using the class name (ClassName.Member) or directly from static methods.
+  - Non-static members require creating an object and are accessed via the instance (obj.Member).
+
+- Lifetime and memory:
+  - Static variables are created once and live for the lifetime of the application domain (shared memory).
+  - Instance variables are created when an object is instantiated and are garbage-collected with the object.
+
+- Example from static-nonstatic-variables.cs:
+  - class static_nonstatic_variables declares int x (instance) and static int y = 56 (static).
+  - Constructor assigns x for each object: new static_nonstatic_variables(78) and new static_nonstatic_variables(98) produce different x values.
+  - Both objects see the same y value because y is static and shared.
+
+- Access rules and behavior:
+  - Static methods can access only static members directly; they cannot access instance members without an object reference.
+  - Instance methods can access both instance and static members.
+  - Changing a static field affects all instances; changing an instance field affects only that object.
+
+- Use cases:
+  - Use static for data or behavior shared across all instances (configuration, counters, utility functions).
+  - Use instance fields for per-object state.
+
+- Additional notes:
+  - Static fields get default values if not explicitly initialized (e.g., numeric -> 0, reference -> null).
+  - Consider thread-safety when using static mutable state in multi-threaded applications.
