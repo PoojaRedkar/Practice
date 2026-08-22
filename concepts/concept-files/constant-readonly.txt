@@ -1,0 +1,11 @@
+﻿Key Concepts
+Const (Constant):
+
+Compile-time evaluation: Constants are fixed at the time of compilation. The compiler replaces references to the variable directly with its literal value in the IL (Intermediate Language) code (26:07).
+Static by default: They are shared across the class and do not require an object instance to access (21:27).
+Initialization: Must be initialized at the time of declaration (10:14).
+Readonly:
+
+Runtime evaluation: These values are determined and assigned at runtime (2:12).
+Instance-based: By default, they are non-static and belong to specific class instances (51:18).
+Initialization: Can be initialized either at declaration or within a constructor, making them flexible for instance-specific values (33:02).

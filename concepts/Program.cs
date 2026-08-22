@@ -19,7 +19,9 @@ using System;
 
 //sequence.main();
 
-Exampleinterview.main();
+//Exampleinterview.main();
+
+Constant_readonly_static_variables.main();
 
 Console.WriteLine();
 Console.WriteLine("Press Enter to exit...");
